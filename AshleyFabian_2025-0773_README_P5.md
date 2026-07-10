@@ -117,11 +117,11 @@ Implementado como *policy-based NAT* dentro de las políticas de firewall de sal
 Verificado mediante ping desde el propio FortiGate y desde ambas máquinas Kali hacia `8.8.8.8`, con 0% de pérdida de paquetes.
 
 > 📸 **Captura:** Consola FortiGate — `execute ping 8.8.8.8` exitoso.
-![](\executeping.png)
+![](executeping.png)
 
 > 📸 **Captura:** Terminal Kali-Cliente y Kali-Servidor — `ping -c 4 8.8.8.8` exitoso.
-![](\Ping8KC.png)
-![](\Ping8KS.png)
+![](Ping8KC.png)
+![](Ping8KS.png)
 
 ### 3.6 Política: solo HTTP de Usuarios hacia Servidores
 
@@ -143,9 +143,9 @@ $ ping -c 3 25.7.74.130
 ```
 
 > 📸 **Captura:** Edit de la política Usuarios-a-Servidores-HTTP.
-![](\USacctionacept.png)
+![](USacctionacept.png)
 > 📸 **Captura:** Terminal con ambos resultados (curl y ping).
-![](\kaliclientecurlsipingno.png)
+![](kaliclientecurlsipingno.png)
 
 ### 3.7 Bloqueo de redes sociales
 
@@ -158,10 +158,10 @@ Connection timed out            ← Bloqueado
 ```
 
 > 📸 **Captura:** Perfil Web Filter con la categoría Social Networking en Block.
-![](\socialnetworkingblock.png)
+![](socialnetworkingblock.png)
 
 > 📸 **Captura:** Terminal con el timeout de Facebook.
-![](\nofacebook.png)
+![](nofacebook.png)
 
 ### 3.8 Bloqueo de itla.edu.do y subdominios
 
@@ -176,10 +176,10 @@ Connection timed out            ← Bloqueado
 ```
 
 > 📸 **Captura:** Static URL Filter con las entradas de itla.edu.do.
-![](\italblock.png)
+![](italblock.png)
 
 > 📸 **Captura:** Terminal con el timeout de itla.edu.do.
-![](\noitla.png)
+![](noitla.png)
 
 ### 3.9 Bloqueo de llamadas de WhatsApp
 
@@ -198,13 +198,13 @@ Destination IP              : 157.240.14.52 (Meta/WhatsApp)
 **Limitación documentada:** la base de firmas de Application Control (APP-DB) de la licencia de evaluación data de 2015 y no recibe actualizaciones de FortiGuard (verificado en System → FortiGuard). Debido a esto, la firma `WhatsApp_VoIP.Call` no logra diferenciar con precisión el tráfico de mensajería de texto del de llamadas de voz/video dentro de la misma sesión TLS de WhatsApp Web, resultando en el bloqueo de la sesión completa en lugar de únicamente la función de llamada. Esta limitación es propia del entorno de laboratorio (licencia eval sin updates) y no de la configuración aplicada, la cual sigue exactamente el procedimiento correcto para bloquear específicamente esa firma.
 
 > 📸 **Captura:** Perfil Application Control con WhatsApp_VoIP.Call en Block.
-![](\whatsappblockedit.png)
+![](whatsappblockedit.png)
 
 > 📸 **Captura:** Log completo de Forward Traffic con los campos citados arriba.
-![](\BloqueoWhatsApp.png)
+![](BloqueoWhatsApp.png)
 
 > 📸 **Captura:** Navegador mostrando el timeout al intentar cargar web.whatsapp.com.
-![](\nowhastapp.png)
+![](nowhastapp.png)
 
 ### 3.10 Detección y bloqueo de escáneres de red
 
@@ -229,13 +229,13 @@ Source IP     : 25.7.73.2
 Prueba realizada con `nmap -sS -Pn -p- -T4 25.7.74.130` (escaneo SYN de los 65,535 puertos con temporización agresiva), disparando la anomalía de inmediato.
 
 > 📸 **Captura:** DoS Policy con la anomalía tcp_port_scan configurada.
-![](\policyportscanDoS.png)
+![](policyportscanDoS.png)
 
 > 📸 **Captura:** Terminal ejecutando el nmap.
-![](\nmapenKali.png)
+![](nmapenKali.png)
 
 > 📸 **Captura:** Log de Anomaly con los campos citados.
-![](\IPSDoSPolicyCRITICAL.png)
+![](IPSDoSPolicyCRITICAL.png)
 
 ### 3.11 WAF en el servidor web
 
@@ -269,21 +269,21 @@ HTTP/1.1 200 OK
 ```
 
 > 📸 **Captura:** Perfil WAF con las 3 categorías en Block.
-![](\WAFenable.png)
+![](WAFenable.png)
 
 > 📸 **Captura:** Edit de la política mostrando Inspection Mode: Proxy-based y WAF activado.
-![](\proxybasedyWAF.png)
+![](proxybasedyWAF.png)
 
 > 📸 **Captura:** Página de bloqueo del WAF (intento XSS).
-![](\xss.png)
-![](\xss2.png)
+![](xss.png)
+![](xss2.png)
 
 > 📸 **Captura:** Página de bloqueo del WAF (intento SQLi).
-![](\SQLinjecction.png)
-![](\SQLinjecction2.png)
+![](SQLinjecction.png)
+![](SQLinjecction2.png)
 
 > 📸 **Captura:** curl -I devolviendo 200 OK (tráfico legítimo).
-![](\200OK.png)
+![](200OK.png)
 
 ---
 
