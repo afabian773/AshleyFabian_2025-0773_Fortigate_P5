@@ -37,7 +37,7 @@ Diseñar e implementar, en su totalidad a través de la interfaz gráfica (GUI) 
 ```
 
 > 📸 **Captura sugerida:** Canvas completo de GNS3 con la topología, incluyendo un recuadro de texto visible con nombre y matrícula del estudiante.
-![](\Topologia.png)
+![](Topologia.png)
 
 ### 2.2 Direccionamiento IP
 
@@ -73,10 +73,10 @@ Configuración realizada en **Network → Interfaces**:
 - **port3 (LAN Servidores):** modo estático, `25.7.74.129/255.255.255.240`, rol LAN, acceso administrativo HTTPS/PING habilitado.
 
 > 📸 **Captura:** Network → Interfaces (vista de lista con las 3 interfaces).
-![](\PUERTOSCONINT.png)
+![](PUERTOSCONINT.png)
 
 > 📸 **Captura:** Consola — `get system interface physical` mostrando las máscaras /25 y /28.
-![](\Getsystem.png)
+![](Getsystem.png)
 
 ### 3.2 DHCP en LAN Usuarios
 
@@ -87,7 +87,7 @@ Activado directamente en la configuración de **port2**, con:
 - DNS: `8.8.8.8`
 
 > 📸 **Captura:** Sección DHCP Server dentro de port2.
-![](\DHCPport2.png)
+![](DHCPport2.png)
 
 > 📸 **Captura:** Terminal Kali-Cliente — `ip addr show eth0` con IP asignada por DHCP.
 ![](image.png)
@@ -97,7 +97,7 @@ Activado directamente en la configuración de **port2**, con:
 Configurada en **Network → Static Routes**: destino `0.0.0.0/0.0.0.0` vía `port1`, con gateway obtenido automáticamente por DHCP.
 
 > 📸 **Captura:** Network → Static Routes.
-![](\StaticRoutes.png)
+![](StaticRoutes.png)
 
 ### 3.4 NAT
 
@@ -107,10 +107,10 @@ Implementado como *policy-based NAT* dentro de las políticas de firewall de sal
 - **Servidores-a-Internet:** port3 → port1, NAT activado (Use Outgoing Interface Address).
 
 > 📸 **Captura:** Policy & Objects → Firewall Policy (lista con columna NAT activa).
-![](\Firewallpolicy.png)
+![](Firewallpolicy.png)
 
 > 📸 **Captura:** Edit de una política mostrando el switch NAT.
-![](\NAt.png)
+![](NAt.png)
 
 ### 3.5 Acceso a Internet
 
